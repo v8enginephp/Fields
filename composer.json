@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Module\\Fields\\Controller\\": "Http/Controllers",
+      "Module\\Fields\\Middleware\\": "Http/Middlewares",
+      "Module\\Fields\\Model\\": "Database",
+      "Module\\Fields\\": "src"
+    }
+  }
+}
