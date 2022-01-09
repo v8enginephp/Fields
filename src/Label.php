@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class Label extends Field
 {
@@ -9,7 +9,7 @@ class Label extends Field
      * @param $body
      * @param array $attributes
      */
-    public function __construct($body, $attributes = [])
+    public function __construct($body, array $attributes = [])
     {
         $this->setValue($body);
         parent::__construct($attributes);
@@ -17,7 +17,6 @@ class Label extends Field
 
     public function render(): ?string
     {
-        listen('field.label.render', null, $this);
         return "<label {$this->attributes()}>{$this->getValue()}</label>";
     }
 }

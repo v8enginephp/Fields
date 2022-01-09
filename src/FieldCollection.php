@@ -1,21 +1,23 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 use App\Exception\V8Exception;
 use App\Helper\Submitter;
+use ArrayIterator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use function Fields\form;
 
-class FieldCollection extends Collection
+class FieldCollection extends ArrayIterator
 {
     public function render()
     {
-        $this->each(function (Field $field) use (&$o) {
-            return $o .= $field;
-        });
-        return $o ?? "";
+        $o = "";
+        foreach ($this as $field) {
+            $o .= $field;
+        }
+        return $o;
     }
 
     public function offsetSet($key, $value)

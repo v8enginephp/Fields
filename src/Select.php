@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class Select extends Field
 {
@@ -10,7 +10,7 @@ class Select extends Field
      * @param array|callable $options
      * @param array $attributes
      */
-    public function __construct($options, $attributes = [])
+    public function __construct($options, array $attributes = [])
     {
         $this->options = $options;
         parent::__construct($attributes);
@@ -18,7 +18,6 @@ class Select extends Field
 
     public function render(): ?string
     {
-        listen('field.select.render', null, $this);
         $output = $this->label() . "<select {$this->attributes()}>";
 
         $this->options = is_callable($this->options) ? call_user_func($this->options) : $this->options;
@@ -36,8 +35,8 @@ class Select extends Field
         return $output . "</select>";
     }
 
-    public function isSelected($val)
+    public function isSelected($val): bool
     {
-        return ($val == $this->getValue() or (is_array($this->getValue()) and in_array($val, $this->getValue())));
+        return ($val == $this->getValue() or (is_array($this->getValue()) and in_array($val, (array)$this->getValue())));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class Input extends Field
 {
@@ -8,7 +8,7 @@ class Input extends Field
      * @param string $type
      * @param array $attributes
      */
-    public function __construct($type = 'text', $attributes = [])
+    public function __construct($type = 'text', array $attributes = [])
     {
         $attributes['type'] = $type;
 
@@ -20,10 +20,8 @@ class Input extends Field
      */
     public function render(): ?string
     {
-        listen('field.input.render', null, $this);
         return $this->label() . "<input {$this->attributes()}>";
     }
-
 
     /**
      * @param $value

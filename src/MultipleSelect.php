@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class MultipleSelect extends Select
 {

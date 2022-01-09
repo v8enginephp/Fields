@@ -1,12 +1,11 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class Textarea extends Field
 {
     public function render(): ?string
     {
-        listen('field.textarea.render', null, $this);
         return $this->label() . "<textarea {$this->attributes()}>{$this->getValue()}</textarea>";
     }
 }

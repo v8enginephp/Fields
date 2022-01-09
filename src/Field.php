@@ -1,8 +1,7 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
-use App\Model\Config;
 use Closure;
 
 abstract class Field

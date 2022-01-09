@@ -1,10 +1,11 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 use App\Exception\V8Exception;
 use Core\Model;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 use function Fields\{collect, input};
 
 trait HasForm
@@ -12,7 +13,7 @@ trait HasForm
     private static array $fields;
     private static FieldCollection $collection;
 
-    public static function getFields()
+    public static function getFields(): array
     {
         return self::$fields ?? self::$fields = self::getFormInputs();
     }
@@ -37,7 +38,7 @@ trait HasForm
         if (is_array($field))
             return "";
 
-        throw new V8Exception("field.notvalid", "field must be array or Field");
+        throw new Exception("field must be array or Field", 500);
     }
 
     protected static function getFormInputs(): array
@@ -45,12 +46,12 @@ trait HasForm
         return [];
     }
 
-    public static function form($action, $method = "POST")
+    public static function form($action, $method = "POST"): Form
     {
         return self::make(["action" => $action, "method" => $method]);
     }
 
-    public function editForm($action, $method = "PUT")
+    public function editForm($action, $method = "PUT"): Form
     {
         self::collect();
 

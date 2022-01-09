@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Fields;
+namespace Rp76\Fields;
 
 class Option extends Field
 {
@@ -16,7 +16,6 @@ class Option extends Field
 
     public function render(): ?string
     {
-        listen('field.option.render', null, $this);
         return "<option {$this->attributes()} value='{$this->getValue()}'>{$this->getLabel()}</option>";
     }
 
